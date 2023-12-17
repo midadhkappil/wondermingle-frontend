@@ -11,8 +11,6 @@ import About from 'Pages/About'
 import Login from "Pages/Login"
 import Signup from "Pages/Signup"
 import Brodcast from "Pages/Brodcast";
-import MainSignup  from "Pages/Users/Signup";
-
 
 const router = createBrowserRouter([
   {
@@ -43,11 +41,7 @@ const router = createBrowserRouter([
         path: "/broadcast/:tripId",
         element: <Brodcast/>,
       },
-      {
-        path: "/mainsignup",
-        element: <MainSignup/>,
-      },
-      
+    
      
     ]
 

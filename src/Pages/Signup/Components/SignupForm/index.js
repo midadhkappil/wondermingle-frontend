@@ -1,6 +1,8 @@
 import { Container, Form, Button } from 'react-bootstrap';
 import { Formik } from "formik";
 
+import { signup } from 'Pages/Signup/api';
+
 
 const Signupform = () => {
     return (<div>
@@ -9,6 +11,7 @@ const Signupform = () => {
             <Formik
                 initialValues={{ email: '', password: '' }}
                 validate={values => {
+                    debugger
                     const errors = {};
                     if (!values.email) {
                         errors.email = 'Required';
@@ -20,11 +23,9 @@ const Signupform = () => {
                     return errors;
                 }}
 
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
+                onSubmit={async (user, { setSubmitting }) => {
+                  await signup(user)
+                  setSubmitting(false)
                 }}
             >
                 {({
@@ -40,7 +41,9 @@ const Signupform = () => {
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="name@example.com" S
+                            <Form.Control 
+                            type="email" 
+                            placeholder="name@example.com" S
                                 name="email"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
