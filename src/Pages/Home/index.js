@@ -11,7 +11,11 @@ const Home = () => {
   }, []);
 
   const fetchtwits = async () => {
-    const responce = await fetch("http://localhost:8080/twit");
+    const responce = await fetch("http://localhost:8080/twit", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
     const jsonResponse = await responce.json();
     setTwits(jsonResponse.data);
   };

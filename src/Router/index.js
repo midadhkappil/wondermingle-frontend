@@ -12,7 +12,7 @@ import Login from "Pages/Login"
 import Signup from "Pages/Signup"
 import Brodcast from "Pages/Brodcast";
 
-const router = createBrowserRouter([
+const privateRouter = createBrowserRouter([
   {
     path: "/",
     element: <Main/>,
@@ -21,6 +21,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Home/>,
       },
+      
       {
         path: "/trips",
         element: <Trips/>,
@@ -28,14 +29,6 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About/>,
-      },
-      {
-        path: "/login",
-        element: <Login/>,
-      },
-      {
-        path: "/signup",
-        element: <Signup/>,
       },
       {
         path: "/broadcast/:tripId",
@@ -46,13 +39,26 @@ const router = createBrowserRouter([
     ]
 
   },
-  
+])
+
+const publicRouter = createBrowserRouter([
+
+  {
+    path: "/",
+    element: <Login/>,
+  },
+  {
+    path: "/signup",
+    element: <Signup/>,
+  },
 ])
 
 
-const Router = () => (
+const Router = ({user}) => {
+  const router = user ? privateRouter : publicRouter
+  return (
   <RouterProvider router={router}/>
-)
+)}
 
 
 export default Router;
