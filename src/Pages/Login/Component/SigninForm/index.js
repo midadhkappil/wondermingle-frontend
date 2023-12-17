@@ -1,17 +1,19 @@
 import { Container, Form, Button } from 'react-bootstrap';
 import { Formik } from "formik";
 
-import { signup } from 'Pages/Signup/api';
+import { login } from 'Pages/Signup/api';
+import useAuth from 'hooks/useAuth';
 
 
 const Signupform = () => {
+    const {setUser} = useAuth()
     return (<div>
         <h1 className='text-center'>WONDER MINGLE</h1>
         <Container className="text-left">
             <Formik
                 initialValues={{ email: '', password: '' }}
                 validate={values => {
-                    debugger
+              
                     const errors = {};
                     if (!values.email) {
                         errors.email = 'Required';
@@ -20,11 +22,15 @@ const Signupform = () => {
                     ) {
                         errors.email = 'Invalid email address';
                     }
+
+                    console.log(errors)
                     return errors;
                 }}
 
                 onSubmit={async (user, { setSubmitting }) => {
-                    await signup(user)
+                    const response = await login(user)
+                    localStorage.setItem("token", response.token)
+                    setUser(response.user)
                     setSubmitting(false)
                 }}
             >
@@ -43,7 +49,7 @@ const Signupform = () => {
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
                                 type="email"
-                                placeholder="name@example.com" S
+                                placeholder="name@example.com"
                                 name="email"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -55,7 +61,6 @@ const Signupform = () => {
 
                             <Form.Label>password</Form.Label>
                             <Form.Control type="password" placeholder="Enter your password"
-
                                 name="password"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -66,7 +71,7 @@ const Signupform = () => {
 
 
                         {errors.password && touched.password && errors.password}
-                        <Button type="submit" disabled={isSubmitting}>
+                        <Button disabled={isSubmitting} type='submit'>
                             Submit
                         </Button>
                     </Form>
