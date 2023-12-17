@@ -25,6 +25,18 @@ const Heder = () => {
           as={NavLink}
           to="/trips"
           className="nav-link px-2 link-dark">Trips</Nav.Link>
+          <Nav.Link
+            as={NavLink}
+            to="/"
+            className="nav-link px-2 link-secondary">Massage</Nav.Link>
+          <Nav.Link 
+          as={NavLink}
+          to=""
+          className="nav-link px-2 link-dark">Find A Guide</Nav.Link>
+           <Nav.Link 
+          as={NavLink}
+          to=""
+          className="nav-link px-2 link-dark">Profile</Nav.Link>
          
         </Nav>
       </Navbar.Collapse>
