@@ -3,9 +3,11 @@ import { Formik } from 'formik';
 import { signup } from 'Pages/Signup/api';
 
 
+
 const SignupForm = () => {
   return (
     <Container className="signup-container">
+      
       <h1 className="text-center">WONDER MINGLE</h1>
       <Formik
         initialValues={{ email: '', password: '' }}
