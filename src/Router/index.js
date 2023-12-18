@@ -54,8 +54,8 @@ const publicRouter = createBrowserRouter([
 ])
 
 
-const Router = ({user}) => {
-  const router = user ? privateRouter : publicRouter
+const Router = ({auth}) => {
+  const router = auth.isLoggedIn ? privateRouter : publicRouter
   return (
   <RouterProvider router={router}/>
 )}

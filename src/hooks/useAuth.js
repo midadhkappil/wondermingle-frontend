@@ -1,11 +1,14 @@
-const { UserContext } = require("context/UserContext")
-const { useContext } = require("react")
+import { useContext } from "react"
+import AuthContext from "context/AuthContext"
+
+
 
 const useAuth = () => {
-    const auth = useContext(UserContext)
+    const auth = useContext(AuthContext)
     return {
+        isLoggedIn: auth.isLoggedIn,
         user: auth.user,
-        setUser: auth.setUser
+        setAuth: auth.setAuth
     }
 }
 

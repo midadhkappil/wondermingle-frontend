@@ -1,19 +1,24 @@
 import { useState } from 'react';
-import Router from './Router'
-
-import { UserContext } from 'context/UserContext';
+import Router from './Router';
+import AuthContext from 'context/AuthContext'; 
+import { ToastContainer } from 'react-toastify';
 
 function App() {
-  const [user, setUser] = useState()
+  const [auth, setAuth] = useState({
+    isLoggedIn: false,
+    user: null,
+  });
 
-  console.log({user})
+  console.log({ auth }); 
   return (
     <div className="App">
-      <UserContext.Provider value={{
-        user, setUser
+      <ToastContainer></ToastContainer>
+      <AuthContext.Provider value={{
+        auth,
+        setAuth 
       }}>
-        <Router user={user}/>
-     </UserContext.Provider>
+        <Router auth={auth} />
+      </AuthContext.Provider>
     </div>
   );
 }
