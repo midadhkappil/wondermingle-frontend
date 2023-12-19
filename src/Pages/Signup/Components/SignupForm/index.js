@@ -1,12 +1,14 @@
 import { Container, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { signup } from 'Pages/Signup/api';
+import logo from "Assets/Images/logo.jpg";
 
 
 
 const SignupForm = () => {
   return (
     <Container className="signup-container">
+      <img src={logo} height={60} className="mb-3" />
       
       <h1 className="text-center">WONDER MINGLE</h1>
       <Formik

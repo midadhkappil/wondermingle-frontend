@@ -1,8 +1,9 @@
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { Formik } from "formik";
 import logo from "Assets/Images/logo.jpg";
-
 import { getToken } from 'utils/storage';
+
+import { setToken } from 'utils/storage';
 
 import { login } from 'Pages/Signup/api';
 import useAuth from 'hooks/useAuth';
@@ -54,7 +55,8 @@ const Signupform = () => {
                         handleBlur,
                         handleSubmit,
                         isSubmitting,
-                        /* and other goodies */
+                        
+                        
                     }) => (
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

@@ -6,11 +6,13 @@ import {
 import Main from "../Layouts/Main";
 
 import Home from 'Pages/Home'
-import Trips from 'Pages/Trips'
+
 import About from 'Pages/About'
 import Login from "Pages/Login"
 import Signup from "Pages/Signup"
-import Brodcast from "Pages/Brodcast";
+import Brodcast from "Pages/Brodcast"
+import Profile from"Pages/Profile"
+import ProfileEditor from"Pages/Profile/Profile editer"
 
 
 const privateRouter = createBrowserRouter([
@@ -23,10 +25,7 @@ const privateRouter = createBrowserRouter([
         element: <Home/>,
       },
       
-      {
-        path: "/trips",
-        element: <Trips/>,
-      },
+      
       {
         path: "/about",
         element: <About/>,
@@ -35,10 +34,16 @@ const privateRouter = createBrowserRouter([
         path: "/broadcast/:tripId",
         element: <Brodcast/>,
       },
-      
+      {
+        path: "/profile",
+        element: <Profile/>,
+      },
+      {
+        path: "/profileeditor",
+        element: <ProfileEditor/>,
+      },
     
     
-     
     ]
 
   },
