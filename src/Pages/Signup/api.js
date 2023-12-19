@@ -13,7 +13,7 @@ return jsonresponse.data;
 };
 
 export const login = async (users) => {
-    const response =await fetch("http://localhost:8080/users/login",{
+    const response =await fetch("http://localhost:8080/user/current-user",{
     method: "post",
     body: JSON.stringify(users),
     headers: {

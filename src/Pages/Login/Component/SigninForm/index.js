@@ -2,6 +2,8 @@ import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { Formik } from "formik";
 import logo from "Assets/Images/logo.jpg";
 
+import { getToken } from 'utils/storage';
+
 import { login } from 'Pages/Signup/api';
 import useAuth from 'hooks/useAuth';
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
@@ -100,5 +102,17 @@ const Signupform = () => {
         </div>
     );
 }
+export const getCurrentUser = async (user) => {
+    const response = await fetch("http://localhost:8080/user/current-user", {
+      headers:
+      {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${getToken()}`
+
+      }
+    });
+    const jsonResponse = await response.json();
+    return jsonResponse.data;
+  }
 
 export default Signupform;

@@ -12,6 +12,7 @@ import Login from "Pages/Login"
 import Signup from "Pages/Signup"
 import Brodcast from "Pages/Brodcast";
 
+
 const privateRouter = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,8 @@ const privateRouter = createBrowserRouter([
         path: "/broadcast/:tripId",
         element: <Brodcast/>,
       },
+      
+    
     
      
     ]
