@@ -50,7 +50,7 @@ const Heder = () => {
               className="nav-link px-2 link-dark">Find A Guide</Nav.Link>
             <Nav.Link
               as={NavLink}
-              to=""
+              to="/profile"
               className="nav-link px-2 link-dark">Profile</Nav.Link>
 
           </Nav>
