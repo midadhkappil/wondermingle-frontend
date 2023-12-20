@@ -1,3 +1,4 @@
+
 import { Container, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { signup } from 'Pages/Signup/api';
@@ -24,6 +25,8 @@ const SignupForm = () => {
         }}
         onSubmit={async (user, { setSubmitting }) => {
           await signup(user);
+          
+
           setSubmitting(false);
         }}
       >
