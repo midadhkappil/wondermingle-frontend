@@ -5,7 +5,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import AuthContext from 'context/AuthContext';
 import useAuth from 'hooks/useAuth';
 import { toast } from 'react-toastify';
-
+import ProfileEditor from 'Pages/Profile/Profile editer';
+import { setToken } from 'utils/storage';
 
 
 
@@ -17,8 +18,10 @@ const Heder = () => {
       isLoggedIn: false,
       user: null
     })
+    setToken("")
     toast.success("Loggedout success")
   }
+  
   return (
     <Navbar bg="light" expand="md" className="mb-4 border-bottom">
       <Container>
@@ -39,11 +42,12 @@ const Heder = () => {
             
             <Nav.Link
               as={NavLink}
-              to="/"
-              className="nav-link px-2 link-secondary">Massage</Nav.Link>
+              to="/message"
+              className="nav-link px-2 link-secondary">Message</Nav.Link>
+
             <Nav.Link
               as={NavLink}
-              to=""
+              to="/"
               className="nav-link px-2 link-dark">Find A Guide</Nav.Link>
             <Nav.Link
               as={NavLink}
@@ -60,7 +64,7 @@ const Heder = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Profile Management</Dropdown.Item>
+              <Dropdown.Item onClick={ProfileEditor }to="/profileeditor">Profile Management</Dropdown.Item>
               <Dropdown.Item href="#/action-2">Theme</Dropdown.Item>
               <Dropdown.Item href="#/action-3">Privacy Management</Dropdown.Item>
               <Dropdown.Item onClick={logout }>Logout</Dropdown.Item>

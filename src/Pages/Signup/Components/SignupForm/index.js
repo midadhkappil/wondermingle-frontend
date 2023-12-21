@@ -13,7 +13,7 @@ const SignupForm = () => {
       
       <h1 className="text-center">WONDER MINGLE</h1>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: '', password: '' ,username: '',country:'',age:'',gender:''}}
         validate={values => {
           const errors = {};
           if (!values.email) {
