@@ -13,6 +13,7 @@ import Signup from "Pages/Signup"
 import Brodcast from "Pages/Brodcast"
 import Profile from"Pages/Profile"
 import ProfileEditor from"Pages/Profile/Profile editer"
+import Message from"Pages/Message"
 
 
 const privateRouter = createBrowserRouter([
@@ -41,6 +42,10 @@ const privateRouter = createBrowserRouter([
       {
         path: "/profileeditor",
         element: <ProfileEditor/>,
+      },
+      {
+        path: "/message",
+        element: <privateRouter element={Message}/>,
       },
     
     

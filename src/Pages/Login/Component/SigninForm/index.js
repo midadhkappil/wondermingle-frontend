@@ -3,7 +3,6 @@ import { Formik } from "formik";
 import logo from "Assets/Images/logo.jpg";
 import { getToken } from 'utils/storage';
 
-import { setToken } from 'utils/storage';
 
 import { login } from 'Pages/Signup/api';
 import useAuth from 'hooks/useAuth';
@@ -93,7 +92,7 @@ const Signupform = () => {
                                 <Col>
                                     <Link to="/forgot-password">Forgot Password</Link>
                                 </Col>
-                                <Col>
+                                <Col >
                                     <Link to="/signup">Don't have an account?</Link>
                                 </Col>
                             </Row>

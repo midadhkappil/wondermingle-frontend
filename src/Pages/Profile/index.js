@@ -12,7 +12,7 @@ const Profile = () => {
                             <div className="rounded-top text-white d-flex flex-row" style={{ backgroundColor: '#000', height: '200px' }}>
                                 <div className="ms-4 mt-5 d-flex flex-column" style={{ width: '150px' }}>
                                     <Card.Img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                                        src=""
                                         alt="Generic placeholder image"
                                         className="img-fluid img-thumbnail mt-4 mb-2"
                                         style={{ width: '150px', zIndex: 1 }}
@@ -20,15 +20,6 @@ const Profile = () => {
                                     <div>
                                       
 
-                                    <Nav style={{zIndex: 999}}>
-                                        <Nav.Link
-                                            as={NavLink}
-                                            to="/profileeditor"
-                                            className="nav-link px-2 link-dark profile-editor-link"
-                                        >
-                                            Edit profile
-                                        </Nav.Link>
-                                    </Nav>
                                     </div>
                                 </div>
                                 <div className="ms-3" style={{ marginTop: '130px' }}>

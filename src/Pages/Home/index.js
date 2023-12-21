@@ -28,30 +28,9 @@ const Home = () => {
     }
   };
 
-  const handleTweetSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:8080/tweet", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify({ content: tweetContent })
-      });
-      if (response.ok) {
-        fetchTwits();
-        setTweetContent("");
-      } else {
-        console.error('Failed to post tweet');
-      }
-    } catch (error) {
-      console.error('Error posting tweet:', error);
-    }
-  };
 
   const onCreateTwit = async(twit) => {
-    const response = createTwitAPI(twit)
+    const response = await createTwitAPI(twit)
     if(response.success){
       toast.success("twit created")
       
@@ -80,7 +59,7 @@ const Home = () => {
       <Container>
         <Row>
           {twits.map((twit) => (
-            <Col md={6} key={twit.id} className="mb-4">
+            <Col md={12} key={twit.id} className="mb-4">
               {/* Assuming CardComponent uses Bootstrap Card */}
               <CardComponent twit={twit} />
             </Col>

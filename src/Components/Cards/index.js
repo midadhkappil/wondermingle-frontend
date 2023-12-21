@@ -1,32 +1,19 @@
-import Button from 'react-bootstrap/Button';
+
 import Card from 'react-bootstrap/Card';
-import { NavLink } from 'react-router-dom';
-import Userpic from 'Assets/Images/user1.jpeg' 
-
-const CustomCard = (props) => {
+import Image from 'react-bootstrap/Image';
+const CustomCard = ({twit}) => {
   return (
-    <Card style={{ width: '68.5rem' }}>
+    <Card className="mb-3">
       <Card.Body>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginBottom: '10px' }}>
-  <img src={Userpic} alt="Profile" style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
-  <span style={{ marginLeft: '5px', fontSize: '12px', fontWeight: 'bold' }}>{props.twit.username}</span>
-  <ul style={{ listStyleType: 'none', padding: 0, fontSize: '12px', marginTop: '5px' }}>
-    <li><h1 style={{ fontSize: '12px', margin: '5px 0' }}>Anshiq</h1></li>
-    <li><h1 style={{ fontSize: '12px', margin: '5px 0' }}>Destination: Switzerland</h1></li>
-    <li><h1 style={{ fontSize: '12px', margin: '5px 0' }}>Starting date: 18/12/23</h1></li>
-    <li><h1 style={{ fontSize: '12px', margin: '5px 0' }}>Ending date: 03/01/24</h1></li>
-  </ul>
-</div>
-
-
-        <Card.Title>{props.twit.title}</Card.Title>
-        <Card.Text>
-          "Excited about planning a trip to Switzerland! 🇨🇭 Looking for an adventure buddy who shares a love for hiking and exploring the great outdoors. Let's make this trip an unforgettable adventure together! #TravelCompanion #HikingAdventures 🏞️✨"
-        </Card.Text>
-
-        <NavLink to={`/broadcast/${props.twit._id}`}>
-          <Button variant="primary">Join broadcast</Button>
-        </NavLink>
+        <div className="d-flex align-items-center mb-3">
+          <Image src={""} roundedCircle style={{ width: '40px', height: '40px' }} />
+          <span className="ms-2 fw-bold">Midad{""}</span>
+        </div>
+        <Card.Text>{twit.destination}</Card.Text>
+        <Card.Text>{twit.startDate}</Card.Text>
+        <Card.Text>{twit.endDate}</Card.Text>
+        <Card.Text>{twit.content}</Card.Text>
+       
       </Card.Body>
     </Card>
   );
