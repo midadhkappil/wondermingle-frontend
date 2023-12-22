@@ -11,6 +11,7 @@ import About from 'Pages/About'
 import Login from "Pages/Login"
 import Signup from "Pages/Signup"
 import Brodcast from "Pages/Brodcast"
+import Findguide from 'Pages/Findguide'
 
 import Message from"Pages/Message"
 
@@ -37,9 +38,12 @@ const privateRouter = createBrowserRouter([
      
       {
         path: "/message",
-        element: <privateRouter element={Message}/>,
+        element: <Message/>,
       },
-    
+      {
+        path: "/findaguide",
+        element: <Findguide/>,
+      },
     
     ]
 

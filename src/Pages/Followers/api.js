@@ -1,9 +1,9 @@
 import { getToken } from "utils/storage";
 
-export const createTwitAPI = async (twit) => {
-    const response = await fetch("http://localhost:8080/twit", {
+export const createFollowRequest = async (body) => {
+    const response = await fetch("http://localhost:8080/follow-requests", {
         method: "POST",
-        body: JSON.stringify(twit),
+        body: JSON.stringify(body),
         headers:
         {
             "Content-Type": "application/json",

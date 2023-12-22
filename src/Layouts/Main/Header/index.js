@@ -2,17 +2,15 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import logo from "../../../Assets/Images/logo.jpg";
 import { NavLink } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
-
 import useAuth from 'hooks/useAuth';
 import { toast } from 'react-toastify';
-
 import { setToken } from 'utils/storage';
 
 
 
 
 const Heder = () => {
-  const {setAuth} = useAuth()
+  const { setAuth } = useAuth()
   const logout = () => {
     setAuth({
       isLoggedIn: false,
@@ -21,12 +19,12 @@ const Heder = () => {
     setToken("")
     toast.success("Loggedout success")
   }
-  
+
   return (
     <Navbar bg="light" expand="md" className="mb-4 border-bottom">
       <Container>
         <Navbar.Brand href="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-          <img src={logo} height={40}/>
+          <img src={logo} height={40} />
           WONDER MINGLE
 
         </Navbar.Brand >
@@ -39,7 +37,7 @@ const Heder = () => {
               as={NavLink}
               to="/"
               className="nav-link px-2 link-secondary">Home</Nav.Link>
-            
+
             <Nav.Link
               as={NavLink}
               to="/message"
@@ -47,8 +45,14 @@ const Heder = () => {
 
             <Nav.Link
               as={NavLink}
-              to="/"
+              to="/findaguide"
               className="nav-link px-2 link-dark">Find A Guide</Nav.Link>
+
+            <Nav.Link
+              as={NavLink}
+              to="/notification"
+              className="nav-link px-2 link-dark">Notification</Nav.Link>
+
             <Nav.Link
               as={NavLink}
               to="/profile"
@@ -67,7 +71,7 @@ const Heder = () => {
               <Dropdown.Item href="#/action-1">Profile Management</Dropdown.Item>
               <Dropdown.Item href="#/action-2">Theme</Dropdown.Item>
               <Dropdown.Item href="#/action-3">Privacy Management</Dropdown.Item>
-              <Dropdown.Item onClick={logout }>Logout</Dropdown.Item>
+              <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
