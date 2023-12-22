@@ -31,6 +31,7 @@ const Home = () => {
 
   const onCreateTwit = async(twit) => {
     const response = await createTwitAPI(twit)
+    setTwits([response.data, ...twits])
     if(response.success){
       toast.success("twit created")
       

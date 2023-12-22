@@ -11,8 +11,7 @@ import About from 'Pages/About'
 import Login from "Pages/Login"
 import Signup from "Pages/Signup"
 import Brodcast from "Pages/Brodcast"
-import Profile from"Pages/Profile"
-import ProfileEditor from"Pages/Profile/Profile editer"
+
 import Message from"Pages/Message"
 
 
@@ -35,14 +34,7 @@ const privateRouter = createBrowserRouter([
         path: "/broadcast/:tripId",
         element: <Brodcast/>,
       },
-      {
-        path: "/profile",
-        element: <Profile/>,
-      },
-      {
-        path: "/profileeditor",
-        element: <ProfileEditor/>,
-      },
+     
       {
         path: "/message",
         element: <privateRouter element={Message}/>,

@@ -6,6 +6,10 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 
+import moment from 'moment';
+moment().format();
+
+
 
 const PostForm = ({ onSubmit }) => {
   const schema = yup.object().shape({
@@ -14,7 +18,7 @@ const PostForm = ({ onSubmit }) => {
     endDate: yup.date().required('Ending date is required'),
     destination: yup.string().required('Destination is required'),
   });
-  
+
 
   return (
     <Formik
@@ -58,10 +62,17 @@ const PostForm = ({ onSubmit }) => {
                   selected={values.startDate}
                   onChange={(date) => setFieldValue('startDate', date)}
                   dateFormat="MM/dd/yyyy" // Customize date format if needed
-                  className={`form-control ${
-                    errors.startDate && touched.startDate ? 'is-invalid' : ''
-                  }`}
+                  className={`form-control ${errors.startDate && touched.startDate ? 'is-invalid' : ''
+                    }`}
+                  
+                  placeholderText="MM/DD/YYYY"
+                  showYearDropdown
+                  scrollableYearDropdown
+                  yearDropdownItemNumber={15}
+                  minDate={moment()} // Set minimum date if needed
+                  maxDate={moment().add(1, 'year')} // Set maximum date if needed
                 />
+
                 <Form.Control.Feedback type="invalid">
                   {errors.startDate}
                 </Form.Control.Feedback>
@@ -75,10 +86,17 @@ const PostForm = ({ onSubmit }) => {
                   selected={values.endDate}
                   onChange={(date) => setFieldValue('endDate', date)}
                   dateFormat="MM/dd/yyyy" // Customize date format if needed
-                  className={`form-control ${
-                    errors.endDate && touched.endDate ? 'is-invalid' : ''
-                  }`}
+                  className={`form-control ${errors.endDate && touched.endDate ? 'is-invalid' : ''
+                    }`}
+                  // Use Moment.js to set the date format
+                  placeholderText="MM/DD/YYYY"
+                  showYearDropdown
+                  scrollableYearDropdown
+                  yearDropdownItemNumber={15}
+                  minDate={moment()} // Set minimum date if needed
+                  maxDate={moment().add(1, 'year')} // Set maximum date if needed
                 />
+
                 <Form.Control.Feedback type="invalid">
                   {errors.endDate}
                 </Form.Control.Feedback>

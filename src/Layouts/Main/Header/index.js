@@ -1,11 +1,11 @@
-import { Navbar, Nav, Button, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import logo from "../../../Assets/Images/logo.jpg";
 import { NavLink } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
-import AuthContext from 'context/AuthContext';
+
 import useAuth from 'hooks/useAuth';
 import { toast } from 'react-toastify';
-import ProfileEditor from 'Pages/Profile/Profile editer';
+
 import { setToken } from 'utils/storage';
 
 
@@ -26,7 +26,7 @@ const Heder = () => {
     <Navbar bg="light" expand="md" className="mb-4 border-bottom">
       <Container>
         <Navbar.Brand href="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-          <img src={logo} height={40} />
+          <img src={logo} height={40}/>
           WONDER MINGLE
 
         </Navbar.Brand >
@@ -64,7 +64,7 @@ const Heder = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item onClick={ProfileEditor }to="/profileeditor">Profile Management</Dropdown.Item>
+              <Dropdown.Item href="#/action-1">Profile Management</Dropdown.Item>
               <Dropdown.Item href="#/action-2">Theme</Dropdown.Item>
               <Dropdown.Item href="#/action-3">Privacy Management</Dropdown.Item>
               <Dropdown.Item onClick={logout }>Logout</Dropdown.Item>
