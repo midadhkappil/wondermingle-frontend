@@ -9,10 +9,11 @@ import useAuth from 'hooks/useAuth';
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
 
 const Signupform = () => {
     const { setAuth } = useAuth();
-    const {navigate} = useNavigate()
+    const { navigate } = useNavigate()
 
     return (
         <div>
@@ -21,99 +22,107 @@ const Signupform = () => {
                 <h1 className="mb-4">WONDER MINGLE</h1>
             </Container>
             <Container className="text-left">
-                <Formik
-                    initialValues={{ email: '', password: '' }}
-                    validate={values => {
-                        const errors = {};
-                        if (!values.email) {
-                            errors.email = 'Required';
-                        } else if (
-                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                        ) {
-                            errors.email = 'Invalid email address';
-                        }
-                        return errors;
-                    }}
+                <Row className="justify-content-md-center">
+                    <Col md={6}>
+                        <Formik
+                            initialValues={{ email: '', password: '' }}
+                            validationSchema={yup.object().shape({
+                                email: yup.string().email().required(),
+                                password: yup.string().required()
+                            })}
 
-                    onSubmit={async (user, { setSubmitting }) => {
-                        const response = await login(user);
-                        localStorage.setItem("token", response.token);
-                        setAuth({isLoggedIn: true, user: response.user});
-                        
-                        toast.success("LoggedIn success")
-                        navigate("/");
-                        setSubmitting(false);
-                    }}
-                   
-                >
-                    {({
-                        values,
-                        errors,
-                        touched,
-                        handleChange,
-                        handleBlur,
-                        handleSubmit,
-                        isSubmitting,
-                        
-                        
-                    }) => (
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control
-                                    type="email"
-                                    placeholder="name@example.com"
-                                    name="email"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.email}
-                                />
-                                {errors.email && touched.email && errors.email}
-                            </Form.Group>
+                            onSubmit={async (user, { setSubmitting }) => {
+                                const response = await login(user);
+                                localStorage.setItem("token", response.token);
+                          
+                                setAuth({ isLoggedIn: true, user: response.user });
 
-                            <Form.Group controlId="passwordField">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control
-                                    type="password"
-                                    placeholder="Enter your password"
-                                    name="password"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.password}
-                                />
-                                {errors.password && touched.password && errors.password}
-                            </Form.Group>
+                                toast.success("LoggedIn success")
+                                navigate("/");
+                                setSubmitting(false);
+                            }}
 
-                            <Button disabled={isSubmitting} type='submit'>
-                                Submit
-                            </Button>
+                        >
+                            {({
+                                values,
+                                errors,
+                                touched,
+                                handleChange,
+                                handleBlur,
+                                handleSubmit,
+                                isSubmitting,
 
-                            <Row className="mt-3">
-                                <Col>
-                                    <Link to="/forgot-password">Forgot Password</Link>
-                                </Col>
-                                <Col >
-                                    <Link to="/signup">Don't have an account?</Link>
-                                </Col>
-                            </Row>
-                        </Form>
-                    )}
-                </Formik>
+
+                            }) => (
+                                <Form onSubmit={handleSubmit}>
+                                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                        <Form.Label>Email address</Form.Label>
+                                        <Form.Control
+                                            type="email"
+                                            placeholder="name@example.com"
+                                            name="email"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.email}
+                                            isInvalid={!!errors.email}
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.email && touched.email && errors.email}
+                                        </Form.Control.Feedback>
+
+                                    </Form.Group>
+
+                                    <Form.Group controlId="passwordField">
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control
+                                            type="password"
+                                            placeholder="Enter your password"
+                                            name="password"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.password}
+                                            isInvalid={!!errors.email}
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.password && touched.password && errors.password}
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+
+                                    <div className="d-grid gap-2">
+
+                                        <Button disabled={isSubmitting} type='submit' className='mt-3' fluid>
+                                            Submit
+                                        </Button>
+                                    </div>
+
+                                    <Row className="mt-3">
+                                        <Col>
+                                            <Link to="/forgot-password">Forgot Password</Link>
+                                        </Col>
+                                        <Col >
+                                            <Link to="/signup">Don't have an account?</Link>
+                                        </Col>
+                                    </Row>
+                                </Form>
+                            )}
+                        </Formik>
+                    </Col>
+                </Row>
             </Container>
         </div>
     );
 }
 export const getCurrentUser = async (user) => {
     const response = await fetch("http://localhost:8080/user/current-user", {
-      headers:
-      {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${getToken()}`
+        headers:
+        {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${getToken()}`
 
-      }
+        }
     });
     const jsonResponse = await response.json();
     return jsonResponse.data;
-  }
+}
 
 export default Signupform;

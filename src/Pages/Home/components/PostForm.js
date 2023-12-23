@@ -38,12 +38,12 @@ const PostForm = ({ onSubmit }) => {
       {({ handleSubmit, handleChange, values, touched, errors, setFieldValue }) => (
         <Form noValidate onSubmit={handleSubmit}>
           <Row className="mb-3">
-            <Col md="12">
+            <Col md="12" className='mb-2'>
               <Form.Group controlId="validationFormikContent">
-                <Form.Label>Where are you going?</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Where are you going?"
+                  as="textarea"
+                  placeholder="What's your travel plan?"
                   name="content"
                   value={values.content}
                   onChange={handleChange}
@@ -57,7 +57,6 @@ const PostForm = ({ onSubmit }) => {
 
             <Col md="4">
               <Form.Group controlId="validationFormikStartDate">
-                <Form.Label>Starting Date</Form.Label>
                 <DatePicker
                   selected={values.startDate}
                   onChange={(date) => setFieldValue('startDate', date)}
@@ -65,7 +64,7 @@ const PostForm = ({ onSubmit }) => {
                   className={`form-control ${errors.startDate && touched.startDate ? 'is-invalid' : ''
                     }`}
                   
-                  placeholderText="MM/DD/YYYY"
+                  placeholderText="Departure"
                   showYearDropdown
                   scrollableYearDropdown
                   yearDropdownItemNumber={15}
@@ -81,7 +80,6 @@ const PostForm = ({ onSubmit }) => {
 
             <Col md="4">
               <Form.Group controlId="validationFormikEndDate">
-                <Form.Label>Ending Date</Form.Label>
                 <DatePicker
                   selected={values.endDate}
                   onChange={(date) => setFieldValue('endDate', date)}
@@ -89,7 +87,7 @@ const PostForm = ({ onSubmit }) => {
                   className={`form-control ${errors.endDate && touched.endDate ? 'is-invalid' : ''
                     }`}
                   // Use Moment.js to set the date format
-                  placeholderText="MM/DD/YYYY"
+                  placeholderText="Return"
                   showYearDropdown
                   scrollableYearDropdown
                   yearDropdownItemNumber={15}
@@ -105,7 +103,6 @@ const PostForm = ({ onSubmit }) => {
 
             <Col md="4">
               <Form.Group controlId="validationFormikDestination">
-                <Form.Label>Destination</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Destination"
@@ -120,7 +117,9 @@ const PostForm = ({ onSubmit }) => {
               </Form.Group>
             </Col>
           </Row>
-          <Button type="submit">POST</Button>
+          <div className='text-end'>
+          <Button type="submit" className='text-right'>POST</Button>
+          </div>
         </Form>
       )}
     </Formik>

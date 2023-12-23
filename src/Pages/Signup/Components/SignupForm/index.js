@@ -3,10 +3,15 @@ import { Container, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { signup } from 'Pages/Signup/api';
 import logo from "Assets/Images/logo.jpg";
-
+import { toast } from 'react-toastify';
+import useAuth from 'hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import { login } from 'Pages/Signup/api';
 
 
 const SignupForm = () => {
+  const { setAuth } = useAuth();
+    const { navigate } = useNavigate()
   return (
     <Container className="signup-container">
       <img src={logo} height={60} className="mb-3" />
@@ -24,9 +29,13 @@ const SignupForm = () => {
           return errors;
         }}
         onSubmit={async (user, { setSubmitting }) => {
-          await signup(user);
+          const response = await login(user);
+          localStorage.setItem("token", response.token);
+    
+          setAuth({ isLoggedIn: true, user: response.user });
 
-
+          toast.success("Account created and loggedIn success")
+          navigate("/home");
           setSubmitting(false);
         }}
       >
