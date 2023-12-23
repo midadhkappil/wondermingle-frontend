@@ -1,14 +1,13 @@
 import { useContext } from "react"
 import AuthContext from "context/AuthContext"
 
-
-
 const useAuth = () => {
-    const auth = useContext(AuthContext)
+    const {auth, setAuth} = useContext(AuthContext)
+    const {isLoggedIn, user} = auth
     return {
-        isLoggedIn: auth.isLoggedIn,
-        user: auth.user,
-        setAuth: auth.setAuth
+        isLoggedIn,
+        user,
+        setAuth
     }
 }
 

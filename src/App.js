@@ -16,6 +16,10 @@ function App() {
     checkAuth()
   },[])
 
+  useEffect(() => {
+    console.log("auth changes", auth)
+  },[auth])
+
 
   const checkAuth = () => {
     const token = getToken();
@@ -33,7 +37,7 @@ function App() {
       })
       
     } catch (error) {
-      
+      console.log({error})
     } finally {
       setIsLoading(false)
     }
@@ -43,16 +47,15 @@ function App() {
     return "Loading"
   }
 
-  console.log({ auth }); 
   return (
     <div className="App">
-      <ToastContainer></ToastContainer>
       <AuthContext.Provider value={{
         auth,
         setAuth 
       }}>
         <Router auth={auth} />
       </AuthContext.Provider>
+      <ToastContainer/>
     </div>
   );
 }

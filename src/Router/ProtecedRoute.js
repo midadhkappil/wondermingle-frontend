@@ -7,9 +7,10 @@ const ProtetedRoute = ({element:Element}) => {
     const navigate = useNavigate()
         useEffect(() => {
             checkAuth()
-        },[])
+        },[isLoggedIn])
 
         const checkAuth = () => {
+            console.log({isLoggedIn})
             if(!isLoggedIn){
                 navigate("/signup")
             }

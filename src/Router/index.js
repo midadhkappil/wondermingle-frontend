@@ -4,16 +4,14 @@ import {
 } from "react-router-dom";
 
 import Main from "../Layouts/Main";
-
 import Home from 'Pages/Home'
-
 import About from 'Pages/About'
 import Login from "Pages/Login"
 import Signup from "Pages/Signup"
-import Brodcast from "Pages/Brodcast"
-import Findguide from 'Pages/Findguide'
-
 import Message from"Pages/Message"
+import Profile from "Pages/Profile"
+import Notification from "Pages/Notification";
+import ProtetedRoute from "./ProtecedRoute";
 
 
 const privateRouter = createBrowserRouter([
@@ -31,20 +29,21 @@ const privateRouter = createBrowserRouter([
         path: "/about",
         element: <About/>,
       },
-      {
-        path: "/broadcast/:tripId",
-        element: <Brodcast/>,
-      },
+ 
      
       {
         path: "/message",
         element: <Message/>,
       },
       {
-        path: "/findaguide",
-        element: <Findguide/>,
+        path: "/notification",
+        element: <Notification/>,
       },
-    
+      
+      {
+        path: "/profile",
+        element: <ProtetedRoute element={Profile}/>,
+      },
     ]
 
   },

@@ -5,6 +5,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import useAuth from 'hooks/useAuth';
 import { toast } from 'react-toastify';
 import { setToken } from 'utils/storage';
+import { FaBell } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 
@@ -32,49 +34,29 @@ const Heder = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link
-              as={NavLink}
-              to="/"
-              className="nav-link px-2 link-secondary">Home</Nav.Link>
-
-            <Nav.Link
-              as={NavLink}
-              to="/message"
-              className="nav-link px-2 link-secondary">Message</Nav.Link>
-
-            <Nav.Link
-              as={NavLink}
-              to="/findaguide"
-              className="nav-link px-2 link-dark">Find A Guide</Nav.Link>
-
-            <Nav.Link
-              as={NavLink}
-              to="/notification"
-              className="nav-link px-2 link-dark">Notification</Nav.Link>
-
-            <Nav.Link
-              as={NavLink}
-              to="/profile"
-              className="nav-link px-2 link-dark">Profile</Nav.Link>
-
+          <Nav className="mx-auto justify-content-center">
+            <Nav.Link as={NavLink} to="/" className="nav-link px-2 link-secondary">Home</Nav.Link>
+            <Nav.Link as={NavLink} to="/message" className="nav-link px-2 link-secondary">Message</Nav.Link>
+            <Nav.Link as={NavLink} to="/findaguide" className="nav-link px-2 link-dark">Find A Guide</Nav.Link>
+            <Nav.Link as={NavLink} to="/profile" className="nav-link px-2 link-dark">Profile</Nav.Link>
           </Nav>
         </Navbar.Collapse>
 
         <div>
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic" style={{ backgroundColor: 'blue' }}>
-              Settings
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Profile Management</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Theme</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Privacy Management</Dropdown.Item>
-              <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+        <Dropdown>
+      <Link to="/notification" className="nav-link">
+        <Dropdown.Toggle variant="success" id="dropdown-basic" style={{ backgroundColor: 'blue' }}>
+          Notifiction<FaBell />
+        </Dropdown.Toggle>
+      </Link>
+      
+      <Dropdown.Menu>
+        
+      </Dropdown.Menu>
+    </Dropdown>
         </div>
+
+        
       </Container>
     </Navbar>
   );
