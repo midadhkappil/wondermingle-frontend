@@ -76,6 +76,32 @@ const Profile = () => {
                   </div>
                 </div>
                 <Nav variant="tabs" className="profile-header-tab nav nav-tabs">
+                <div className="container">
+      <Row>
+        <Col md={12}>
+          <div id="content" className="text-center">
+            <div className="profile">
+              <div className="profile-header">
+                
+                <Nav variant="tabs" className="profile-header-tab nav nav-tabs">
+                  <Nav.Item>
+                    <Nav.Link href="#/posts">Posts</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="#/about">About</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="#/photos">Photos</Nav.Link>
+                  </Nav.Item>
+                 
+                </Nav>
+              </div>
+            </div>
+            
+          </div>
+        </Col>
+      </Row>
+    </div>
 
                 </Nav>
               </div>

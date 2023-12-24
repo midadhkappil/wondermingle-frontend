@@ -1,11 +1,12 @@
 
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Col, Row, Dropdown } from 'react-bootstrap';
 import ProfilePicPlaceholder from 'Components/ProfilePicPlaceholder';
 import { RiMapPinLine } from "react-icons/ri";
 import { LiaPlaneDepartureSolid } from "react-icons/lia";
 import { LiaPlaneArrivalSolid } from "react-icons/lia";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 
@@ -17,6 +18,7 @@ const CustomCard = ({ twit, onClickCancelFollowRequest, followRequests, onClickF
 
 
   return (
+
     <Card className="mb-3">
       <Card.Body>
         <div className="d-flex align-items-center mb-3">
@@ -31,6 +33,16 @@ const CustomCard = ({ twit, onClickCancelFollowRequest, followRequests, onClickF
             </Col>
             <Col>
               <FollowButton onClickFollow={onClickFollow} userId={twit.user._id} onClickCancelFollowRequest={onClickCancelFollowRequest} followRequests={followRequests} />
+            </Col>
+            <Col className="text-right">
+              <Dropdown className="ml-auto">
+                <Dropdown.Toggle variant="light" id="dropdown-basic" className="text-center">
+                  <BsThreeDotsVertical />
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item>Report</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Col>
           </Row>
         </div>

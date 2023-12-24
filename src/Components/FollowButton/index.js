@@ -9,6 +9,11 @@ const FollowButton = ({ onClickFollow, userId, followRequests=[], onClickCancelF
         return null;
     }
 
+    if(user.followers.includes(userId)){
+        debugger
+        return null
+    }
+
     const followRequest = followRequests.find((request) => request.recipient === userId)
 
     if(!followRequest){
