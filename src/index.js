@@ -9,6 +9,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import axios from 'axios'
 
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+axios.defaults.withCredentials = true
+
 
 ReactDOM.render(
   <React.StrictMode>
