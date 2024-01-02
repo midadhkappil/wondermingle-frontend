@@ -1,0 +1,4 @@
+export const BASE_PROFILE_IMAGE_URL =
+  process.env.REACT_APP_BASE_PROFILE_IMAGE_URL;
+export const BASE_POST_IMAGE_URL = process.env.REACT_APP_BASE_POST_IMAGE_URL;
+export const SOCKET_ENDPOINT = process.env.REACT_APP_SOCKET_ENDPOINT;
