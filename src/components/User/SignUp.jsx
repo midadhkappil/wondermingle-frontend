@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { clearErrors, registerUser } from "../../actions/userAction";
 import BackdropLoader from "../Layouts/BackdropLoader";
 
-import Logo from "assets/images/logo.jpg";
+import Logo from "../../assets/images/logo.jpg";
 
 const SignUp = () => {
   const dispatch = useDispatch();

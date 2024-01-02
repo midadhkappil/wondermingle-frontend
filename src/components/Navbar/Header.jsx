@@ -16,8 +16,6 @@ import { BASE_PROFILE_IMAGE_URL } from "../../utils/constants";
 import SearchBox from "./SearchBar/SearchBox";
 import { ClickAwayListener } from "@mui/material";
 
-import Logo from "assets/images/logo.jpg";
-
 const Header = () => {
   const { user } = useSelector((state) => state.user);
 

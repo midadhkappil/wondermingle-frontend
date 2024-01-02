@@ -7,7 +7,7 @@ import BackdropLoader from "../Layouts/BackdropLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loginUser } from "../../actions/userAction";
 
-import Logo from "assets/images/logo.jpg";
+import Logo from "../../assets/images/logo.jpg";
 
 const Login = () => {
   const dispatch = useDispatch();
