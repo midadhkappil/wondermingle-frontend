@@ -1,9 +1,0 @@
-#notification-dropdown::after {
-    display: none;
-  }
-#notification .dropdown-menu{
-    position: absolute !important;
-    right: 0 !important;
-    min-width: 318px !important;
-    left: auto !important;
-}
