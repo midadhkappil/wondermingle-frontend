@@ -1,6 +1,6 @@
 import React from "react";
 
-import LoginBg from "assets/images/login-bg.jpeg";
+import LoginBg from "resources/images/login-bg.jpeg";
 
 const Auth = ({ children }) => {
   return (

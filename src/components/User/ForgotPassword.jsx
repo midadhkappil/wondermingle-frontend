@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import BackdropLoader from "../Layouts/BackdropLoader";
 
-import Logo from "../../assets/images/logo.jpg";
+import Logo from "../../resources/images/logo.jpg";
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
